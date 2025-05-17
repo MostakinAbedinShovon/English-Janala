@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Temporary Mail -->
+    <!-- fofef22648@eligou.com -->
+
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/e1d73087ae.js" crossorigin="anonymous"></script>
+
+    <!-- Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Title -->
+    <title>English Janala</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div id="Navigation_Bar" class="bg-[#eeeeee] h-24 items-center justify-between fixed top-0 left-0 w-full z-50 border-b-1 hidden">
+            <!-- Left Icon -->
+            <a href="index.html">
+                <div class="flex items-center ml-20">
+                    <h1 class="psbe text-xl">English</h1>
+                    <img src="assets/logo.png" alt="">
+                    <h1 class="trb text-xl">জানালা</h1>
+                </div>
+            </a>
+
+            <!-- Right Buttons -->
+            <div class="flex items-center gap-4 mr-20">
+                <button id="FAQ_Button" class="btn border-[#422AD5] text-sm psbe text-[#422AD5] hover:bg-[#422AD5] hover:text-white">
+                    <i class="fa-solid fa-circle-question"></i>
+                    FAQ
+                </button>
+                <button id="Learn_Button" class="btn border-[#422AD5] text-sm psbe text-[#422AD5] hover:bg-[#422AD5] hover:text-white">
+                    <i class="fa-solid fa-book-open"></i>
+                    Learn
+                </button>
+                <button onclick="Logout()" id="Logout_Button" class="btn border-[#422AD5] text-sm psbe text-[#422AD5] hover:bg-[#422AD5] hover:text-white">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-20">
+        <!-- First Section -->
+        <section id="Banner_Section" class="flex justify-between items-center mt-28">
+            <!-- Left Form Part -->
+            <div>
+                <h1 class="pbe text-5xl mb-6"> <span class="text-[#00BCFF]">English </span>is Easy!!</h1>
+                <p class="hmb text-2xl/9.5 text-[#4d4d56] w-[727px] mb-7">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন।
+                    আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি
+                    Level এ</p>
+                <div class="flex flex-col">
+                    <input
+                        class="rounded border-[1.5px] border-[#dddddd] h-10 w-80 mb-5 pl-3 placeholder: pre text-sm focus:outline-[#9f9f9f]"
+                        placeholder="Enter Your Name" type="email" name="" id="Login_Name">
+                    <input
+                        class="rounded border-[1.5px] border-[#dddddd] h-10 w-80 mb-5 pl-3 placeholder: pre text-sm focus:outline-[#9f9f9f]"
+                        placeholder="Enter Login Code(123456)" type="password" name="" id="Login_Code">
+                    <button onclick="Varification()" class="btn bg-[#422AD5] text-white pme text-sm w-[115px] h-10 hover:bg-[#3322a3]">Get
+                        Started</button>
+                </div>
+            </div>
+
+            <!-- Right Image Part -->
+            <div>
+                <img src="assets/hero-student.png" alt="">
+            </div>
+        </section>
+        <!-- Second Section -->
+        <section id="Learn_Section" class="hidden justify-center items-center pt-32">
+            <div>
+                <div>
+                    <p class="pbe text-4xl text-center mb-9">
+                        <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
+                    </p>
+                </div>
+                <div id="Lesson_Section" class="flex justify-center gap-5 mb-10"></div>
+
+                <!-- Display flex korte hobe -->
+                <div id="Loading_Spinner" class="w-[1759px] h-52 hidden flex-col justify-center items-center">
+                    <span class="loading loading-spinner loading-xl"></span>
+                </div>
+                <!-- Without Click & Without Data -->
+                <div id="Initial_Empty_Card" class="w-[1759px] h-52 rounded-3xl bg-[#F8F8F8] flex flex-col justify-center items-center">
+                    <p class="hrb text-sm text-[#79716B] mb-3">আপনি এখনো কোন Lesson Select করেন নি।</p>
+                    <p class="hmb text-4xl text-[#292524]">একটি Lesson Select করুন।</p>
+                </div>
+
+                <!-- With Click & Without Data -->
+                <div id="Empty_Card" class="w-[1759px] h-[338px] rounded-3xl bg-[#F8F8F8] flex-col justify-center items-center hidden">
+                    <img src="assets/alert-error.png" alt="">
+                    <p class="hrb text-sm text-[#79716B] mb-3">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                    <p class="hmb text-4xl text-[#292524]">নেক্সট Lesson এ যান</p>
+                </div>
+
+                <!-- With Data & Card Section -->
+                <div id="Card_Section" class="w-[1759px] h-auto rounded-3xl bg-[#F8F8F8] grid-cols-3 gap-[30px] p-[30px] hidden">    </div>
+            </div>
+        </section>
+        <!-- Third Section -->
+        <section id="FAQ_Section" class="hidden justify-center items-center pt-32">
+            <div>
+                <div>
+                    <p class="pbe text-4xl text-center mb-20">
+                        <span class="text-[#00BCFF]">Frequently</span> Asked Questions
+                    </p>
+                </div>
+                <div>
+                    <div tabindex="0"
+                        class="w-[1759px] collapse collapse-plus bg-base-100 border-base-300 border bg-[#F8F8F8] mb-5 rounded-2xl">
+                        <div class="collapse-title pme text-base">1. What the difference between var, let, and const?
+                        </div>
+                        <div class="collapse-content pre text-base text-[#62748E]">
+                            'var' declares a variable with function scope and can be re-assigned, 'let' declares a block-scoped variable that can also be re-assigned, while 'const' declares a block-scoped variable that cannot be re-assigned after initialization.
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="w-[1759px] collapse collapse-plus bg-base-100 border-base-300 border bg-[#F8F8F8] mb-5 rounded-2xl">
+                        <div class="collapse-title pme text-base">2. What the difference between map(), forEach(), and filter()?
+                        </div>
+                        <div class="collapse-content pre text-base text-[#62748E]">
+                            'map()' creates a new array with the results of calling a function on every element, 'forEach()' executes a function on each element without returning anything, and 'filter()' creates a new array with all elements that pass the test implemented by the provided function.
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="w-[1759px] collapse collapse-plus bg-base-100 border-base-300 border bg-[#F8F8F8] mb-5 rounded-2xl">
+                        <div class="collapse-title pme text-base">3. Explain arrow functions and how they are different from regular functions</div>
+                        <div class="collapse-content pre text-base text-[#62748E]">
+                            Arrow functions are a shorter way to write functions, and they always use the 'this' value from where they are defined(don't have their own list of arguments), unlike regular functions that get their 'this' based on how they're called.
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="w-[1759px] collapse collapse-plus bg-base-100 border-base-300 border bg-[#F8F8F8] mb-5 rounded-2xl">
+                        <div class="collapse-title pme text-base">4. How JavaScript Promises work?</div>
+                        <div class="collapse-content pre text-base text-[#62748E]">
+                            JavaScript Promises represent a value that may not be available yet but will be resolved in the future, allowing you to handle asynchronous operations with then(), catch(), and finally() methods for success, failure, and completion respectively.
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="w-[1759px] collapse collapse-plus bg-base-100 border-base-300 border bg-[#F8F8F8] mb-5 rounded-2xl">
+                        <div class="collapse-title pme text-base">5. How closures work in JavaScript?
+                        </div>
+                        <div class="collapse-content pre text-base text-[#62748E]">
+                            Closures in JavaScript allow a function to remember and access variables from its lexical scope, even after the outer function has finished executing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Connection -->
+        <script src="navigation.js"></script>
+    </main>
+
+    <footer class="flex justify-between border-t-[3px] border-[#FFEBEB] mt-28">
+        <!-- Left Part -->
+        <div class="mx-20 w-[1759px] flex justify-between h-80">
+            <div class="flex flex-col justify-center">
+                <a href="index.html">
+                    <div class="flex items-center mb-5">
+                        <h1 class="psbe text-xl">English</h1>
+                        <img src="assets/logo.png" alt="">
+                        <h1 class="trb text-xl">জানালা</h1>
+                    </div>
+                </a>
+                <p class="hmb text-xl">ইংরেজি শিখুন সহজে</p>
+                <p class="hrb text-base">Providing ED-Tech Applications since 2025</p>
+            </div>
+            <!-- Right Part -->
+            <div class="flex flex-col justify-center">
+                <p class="pme text-base text-[#676767] mb-4">Follow us</p>
+                <!-- Social Media Icons -->
+                <div class="flex gap-4">
+                    <a href="">
+                        <i class="fa-brands fa-facebook fa-xl"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-youtube fa-xl"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-instagram fa-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
